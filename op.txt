@@ -1,0 +1,36 @@
+Federal Object Platform
+http://www.voodoowarez.com
+
+=Purpose:=
+Extend and enhance the programmer's object paradigm in a friendly play-focused manner to the user to encourage the growth of a pervasive software ecosystem.
+
+=Synopsis:=
+"In ecology, an ecosystem is a naturally occurring assemblage of organisms (...) living together with their environment (or biotope), functioning as a unit of sorts." 
+"Ecosystem," Wikipedia, July 10, 2005.
+
+The Object Platform hopes to provide a suitable technical environment to allow for the change, interconnection and evolution of presently isolated software units to form a growing  living pervasive software ecosystem.  The Object Platform purports to create a deeply nested transactional virtual memory system within the existing Common Language Infrastructure runtime (the virtual machine underneath dotNet) and links this object memory system to a Security Assertion Markup Language (SAML) and Liberty Alliance federated identity framework to allow for operation across untrusted and sometimes-disconnected systems.  This serves as groundwork to allow the Object Platform to provide natural exposure to programs, users, scripts and daemons to the running application's object model, along with an integrated dynamic typing system to allow for modification, alteration and supplementation.  These three components, the transactional object layer, the standards based  federated identity system and dynamic typing extension allow for evolution of a new software ecosystem across formerly isolated disparate systems and disparate applications. 
+
+=Benefit:  http://www.voodoowarez.com/demos.html=
+The Object Platform aims to be the basis of a new pervasive software ecosystem.  Opening up the application to the outside world and encouraging users to play around with their running systems, the Object Platform hopes to allow pervasive and distributed software systems to be naturally evolved and interconnect by users, not application builders.  Rather than designing perfect distributed applications, the Object Platform derives a consistent transaction-oriented federal object run time environment to host existing applications, and leaves the user with the tools to weave together applications as she chooses.  If she breaks anything, the long lived transaction can simply be aborted.  Above all else, the Object Platform hopes to allow for the evolution and growth of software systems by eliminating the cost and danger of interconnection, experimentation, and openness. 
+
+The Object Platform follows the inspiration of Smalltalk, a runtime programming environment that encouraged the user to alter the system at runtime.  Other similar systems are the Gnome GObject system or the KDE DCOP system, which give users an API and filesystem tools to modify their environments at runtime.  The Object Platform's distinction is that it is geared for pervasive operation; multiple users and software agents running at once.  It will be the first consumer oriented implementation of the Liberty Alliance specifications, exporting the fundamental objects of our programs to an authorized federated identity space, further providing long-lived transactional capabilities to isolate faults and hazards. 
+
+=Details:  http://www.voodoowarez.com=
+The Object Platform is built of three components; a transactional object virtual memory subsystem injected into the application runtime, a federated identity management system to identify and authorize components and accessors, and a dynamic typing system to allow objects to be extended.
+
+Transactional Engine:
+The transactional engine uses the RAIL instrumentation project (http://rail.dei.uc.pt) to alter ECMA Common Language Infrastructure programs as they are being loaded, injecting an additional interception layer to track and process object modification.  When a thread or context reads or modifies an object, the transaction engine begins a new transaction and records all read and writes.  Transactions dynamically grow as they write to objects, using a read-copy-update scheme to minimize work and storage.  The transaction engine attempts to serialize and merge transactions, but in most cases merging transactions requires additional work, on the part of the user or application.  On the other hand, users can easily switch between transactions and restore old transaction checkpoints.
+
+Transactions are classified as open nested multi-threaded transactions (Kienzle, 2003); multiple agents can interact with and nest transactions.  The replication engine will use eager replication (http://www.cs.mcgill.ca/~kemme/papers/vldb00.html) to avoid the need for two phase commitment, a natural choice for a high performance read-copy-update scheme.  Serialization is provided by the Spread group communication toolkit (http://www.spread.org), a toolkit for latency-resistant network message ordering.  Disconnected and delayed operations are handled by the federated object system; most transactions are inherently long lived, the particular body on which they reside is not important.
+
+Federated Identity Management:
+Identity within the Object Framework follows the concept of Mobile Ambients (http://www.luca.demon.co.uk/Ambit/Ambit.html), self contained domains where computation can occur.  Each ambient represents an its own authorizing identity; an identity implemented as a Liberty Alliance service and identity provider, granting access to other objects and authorizing its own objects.  Since ambients can be nested, it is possible to create a hierarchy, placing a number of applications under the auspices of a domain or user run master daemon.
+
+Dynamic Typing:
+To allow for external systems to perform meaningful interactions with running systems, they must be able to alter the system.  The final key component of the Object Platform is a dynamic typing extension to the Common Language Infrastructure.  The object virtual memory system performs this duty, allowing for either individual objects or entire types to be altered and extended at runtime.
+
+Object Platform Shell:
+To access the application, users will be provided with a shell derived from the Boo shell interface (http://boo.codehaus.org).  Boo provides the ideal shell environment with support for facilities like closures and generators.  The eventual goal is to build a userland file system and set of file system tools to blend together the application's in memory object presence with the conventional filesystem hierarchy and plethora of filesystem tools.
+
+Universal Plug and Play:
+To highlight the power and potential of the Object Platform and its ability to evolve a software system, I will be building a Universal Plug and Play (UPnP) (http://www.upnp.org) object which supplements existing objects by way of the dynamic typing system.  To initialize, the object simply requires a complete UPnP device XML file.  The individual functionalities can then be mapped to existing functions within the Object Platform, and manipulated in real time.  To express just how elegant and utterly simple this makes building UPnP solutions, I'll be implementing UPnP media player control for a number of existing software media players.  Lastly, I'll develop a UPnP media controller which accepts either any UPnP end point, or alternatively Object Platform UPnP objects.

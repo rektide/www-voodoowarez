@@ -1,0 +1,158 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<title>VoodooWarez :: Demos</title>
+<meta name="generator" content="the leet foo">
+<link href="parch.css" rel="stylesheet" type="text/css">
+</head>
+
+<body bgcolor="#261F1E" text="#FDFED6">
+<h2>[Demonstration]</h2>
+
+<p>All demonstrations are built around the <a href="spiffynet.html">SpiffyNet</a> home automation network.</p>
+<br>
+
+<p>&gt;The SpiffyNet system provides a
+"mobile ambient;" a Haunt in VooodooWarez's Object Platform parlance, which
+serves as a self contained operating environment for control over the
+SpiffyNet system.</p>
+<br>
+<br>
+
+<h2>Initialization</h2>
+
+<p>### minimum setup : all that is required for a working SpiffyNet system ###</p>
+<p>&gt;&gt;&gt; load("spiffynet.dll")</p>
+<p>&gt;&gt;&gt; mySpiffyNet = SpiffyHaunt()</p>
+<p>### the entire network is now completely operational ###</p>
+<br>
+
+<p>### more typically, SpiffyNet will be just one Haunt in the set of Haunts ###</p>
+<p>&gt;&gt;&gt; load("spiffynet.dll")</p>
+<p>&gt;&gt;&gt; rootHaunt = Shadow()</p>
+<p>&gt;&gt;&gt; spiffyHaunt = SpiffyHaunt()</p>
+<p>&gt;&gt;&gt; rootHaunt.Add(spiffyHaunt)</p>
+<br>
+<br>
+
+<h2>Runtime Modifications of SpiffyNet</h2>
+<p>The following scripts illustrate runtime modification of the Spiffy Home
+Automation Network</p>
+<br>
+
+<p>### examine's spiffyHaunt's NodeFinder : NodeFinder is responsible for
+tracking the presence and absence of nodes ###</p>
+<p>&gt;&gt;&gt; dir(spiffyHaunt]["NodeFinder"])</p>
+<p>[[[ ]]]</p>
+<br>
+
+<p>### setup additional debugging printouts to view network activity ###</p>
+<p>&gt;&gt;&gt; rootHaunt["spiffyHaunt"]["NodeFinder"].nodeConnect += def
+interceptConnect (newnode as SpiffyNode):</p>
+<p style="text-indent: 12pt">... print ("new node of type " + newnode.friendlyTypeName + " named " + newnode.name " found")</p>
+<p style="text-indent: 12pt">... foreach d as SpiffyDevice in newnode.devices:</p>
+<p style="text-indent: 24pt">... print (" node contains " + d.Name + " which is a " + d. + "device")</p>
+<br>
+
+<p>### plug in SpiffyNet network node ###</p>
+<p>[[[ new node of type SpiffyDevice named LivingRoom Node found]]</p>
+<p>[[[ node contains Living Room Light which is a Spiffy Light device ]]]</p>
+<p>[[[ node contains Desklamp which is a Spiffy Light device ]]</p>
+<p>[[[ node contains Wallswitch which is a Spiffy Switch device ]]</p>
+<br>
+
+<p>### setup additional debugging to witness network disconnects ###</p>
+<p>&gt;&gt;&gt; spiffyHaunt["NodeFinder"].nodeDisconect += def(donenode as SpiffyNode):</p>
+<p style="text-indent: 12pt">... print("node " + donenode.name + " has disconnected")</p>
+<p style="text-indent: 12pt">... donenode.name += " [<span class="silvered">disconnected</span>]"</p>
+<p style="text-indent: 12pt">...</p>
+<br>
+
+<p>### physically disconnect node ###</p>
+<p>[[[ node LivingRoom Node has disconnected ]]]</p>
+<p>### physically reconnect node ###</p>
+<p>[[[ new node of type SpiffyDevice named LivingRoom Node [<span class="silvered">disconnected</span>] found]]</p>
+<p>[[[ node contains Living Room Light which is a Spiffy Light device ]]]</p>
+<p>[[[ node contains Desklamp which is a Spiffy Light device ]]</p>
+<p>[[[ node contains Wallswitch which is a Spiffy Switch device ]]</p>
+<br>
+
+<p>### various means of adding the UpnpHaunt mixin to the SpiffyHaunt ###</p>
+<p>&gt;&gt;&gt; spiffyHaunt.Add( UpnpHaunt("MyUpnp") )</p>
+<p>&gt;&gt;&gt; upnpFirstHaunt = SpiffyHaunt["MyUpnp"]</p>
+<p>&gt;&gt;&gt; upnpSecondHaunt = UpnpHaunt("SecondUpnp")</p>
+<p>&gt;&gt;&gt; spiffyHaunt.Add(upnpSecondHaunt)</p>
+<p>### all nodes in SpiffyHaunt are now have two unique Upnp exposures ###</p>
+<br>
+
+<p>### debug output on SetLoadLevelTarget event for DeskLamp under upnpFirstHaunt exposure ###</p>
+<p>&gt;&gt;&gt; deskLampUpnp = upnpFirstHaunt["LivingRoom node"]["Desklamp"] as SpiffyDevice</p>
+<p>&gt;&gt;&gt; deskLampUpnp["SetLoadLevelTarget"].postDefine ( def (val as byte):</p>
+<p style="text-indent: 12pt">... print("changing brightness to " + val.ToString())</p>
+<p style="text-indent: 12pt">...</p>
+<br>
+
+<p>### turn on lamp whenever we adjust the light level for all exposures ###</p>
+<p>&gt;&gt;&gt; deskLamp = spiffyHaunt["Desklamp"]</p>
+<p>&gt;&gt;&gt; deskLamp["DimmingService"]["SetLoadLevelTarget"].postDefine = def (val as byte):</p>
+<p style="text-indent: 12pt">... deskLamp["SwitchPower"].SetStatus(true)</p>
+<p style="text-indent: 12pt">...</p>
+<br>
+<br>
+
+<h2>Instances</h2>
+
+<p>next up are instances.<br>
+they are very wacky.</p>
+<br>
+
+<p>### lampOn is simply an instance of a deskLamp, exactly like a normal deskLamp SpiffyDevice ###</p>
+<p>&gt;&gt;&gt; lampSave = deskLamp.instance;</p>
+<p>&gt;&gt;&gt; lampOn = deskLamp.instance["on"]</p>
+<p>&gt;&gt;&gt; lampOn["SwitchPower].Status = true</p>
+<p>&gt;&gt;&gt; lampOn["DimmingService"].LoadLevelTarget = 255</p>
+<p>&gt;&gt;&gt; deskLamp.instance = lampOn</p>
+<p>### deskLamp goes on ###</p>
+<br>
+
+<p>&gt;&gt;&gt; deskLamp.instance = lampSave</p>
+<p>### deskLamp goes back to previous state ###</p>
+<br>
+
+<p>### transactions are nested and aliased ###</p>
+<p>&gt;&gt;&gt; lampOn.instance["dimmed"].LoadLevelTarget = 192</p>
+<p>&gt;&gt;&gt; lampOn.instance["dark"].LoadLevelTarget = 128</p>
+<p>&gt;&gt;&gt; lampOn.instance["dark"].instance["verydark"].LoadLevelTarget = 96</p>
+<p>&gt;&gt;&gt; deskLamp.instance = deskLamp.instance["On"].instance["dimmed"]</p>
+<p>&gt;&gt;&gt; deskLamp.instance = lampOn["dark"]["verydark"]</p>
+<br>
+
+<h2>Typing</h2>
+
+<p>### construct a composite light from dynamic typing ###</p>
+<p>&gt;&gt;&gt; lampMulti = UpnpHaunt.hollowTypes["devices"].["Spiffy Light"]</p>
+<br>
+
+<p>### hollow types do not active real objects, they are simply unmapped inactive interfaces of a type ###</p>
+<p>&gt;&gt;&gt; lampMulti.AddPostDefine(deskLamp)</p>
+<p>&gt;&gt;&gt; lampMulti.AddPostDefine(myFirstHaunt["Living Room Light"])</p>
+<p>### Add automatically mixes in unmapped capabilities ala predicate typing ###</p>
+<p>### AddPostDefine does the same but postfixes incoming fields, methods, events, members to existing mappings ###</p>
+<br>
+
+<p>&gt;&gt;&gt; mySecondHaunt.Add("MultiLight", lampMulti)</p>
+<p>### mySecondHaunt now has a new UPnP device called MultiLight</p>
+<br>
+
+<p>### alter lampMulti so that turning it off does not turn off the living room light ###</p>
+<p>&gt;&gt;&gt; lampMulti["SwitchPower"].reDefine("SetStatus", myFirstHaunt["Living Room Light"], def (val as bool):</p>
+<p><span class="indent">... if val:</span></p>
+<p><span class="indent2">... myFirstHaunt["Living Room Light"].SetStatus(val)</span></p>
+<p><span class="indent2">...</span></p>
+<br>
+
+<p>### in the future : ###</p>
+<p>&gt;&gt;&gt; lampMulti["SwitchPower"]["SetStatus"].unDefine(myFirstHaunt["Living Room Light"])</p>
+
+</body>
+</html>

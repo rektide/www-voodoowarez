@@ -1,0 +1,67 @@
+body {
+	margin: 20px;
+/*	padding: 0px 30px; */
+}
+p {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	margin: 0px;
+	padding: 0px 8px;
+	color: #C0C0AD;
+	font-size: .75em;
+	line-height: 1.05em;
+}
+h1 {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 1.6em;
+	font-style: normal;
+	font-weight: bolder;
+	color: #a8FF0A;
+	margin: 0px;
+	padding: 0px 8px;
+}
+h2 {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 1.2em;
+	font-style: normal;
+	font-weight: bold;
+	margin: 0px;
+	padding: 0px 8px;
+}
+h3 {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 1em;
+	font-weight: bold;
+	color: #90c860;
+	margin: 0px;
+	padding: 0px 8px;
+}
+td {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	margin: 0px;
+	padding: 0px;
+}
+.indent {
+	padding-left: 15px;
+}
+.inline {
+	display: inline;
+}
+.head2subXX {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: small;
+	font-weight: bold;
+	color: #90c860;
+	line-height: -5px;
+}
+a:visited {
+	text-decoration: none;
+	color: #400080;
+}
+a:link {
+	text-decoration: none;
+	color: #400080;
+}
+a:hover {
+	text-decoration: none;
+	color: #480090;
+}

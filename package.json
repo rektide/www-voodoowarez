@@ -1,0 +1,23 @@
+{
+	"name": "www-voodoowarez",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://archive.voodoowarez.com/www-voodoowarez"
+	},
+	"keywords": [],
+	"author": "jauntywunderkind",
+	"license": "MIT",
+	"module": "www-voodoowarez.js",
+	"esm": true,
+	"@std/esm": {
+		"cjs": {
+			"namedExports": true
+		}
+	}
+}

@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>The Network</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="base.css" type="text/css">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<h1>Stage One: Project Control</h1>
+<h2>Or How I Learned To Stop Worrying and Love the Machine</h2>
+
+<p>Part one is simple. We have rewired our electronic world. Simple, eh?
+Well, not as hard as you'd think. The trickiest part is making it universal,
+allowing any device to express its functionality in a universally
+understandable way.</p>
+
+<p>The long and the short of it is the creation of a network with which
+individual devices (appliaces, remote controls, computer controls,
+everything) can talk to each other. To do this, we'll be using a miniature
+low cost computer on a chip, known simply as a <a href="http://www.faqs.org/faqs/microcontroller-faq/primer/">microcontroller</a>.
+In our case, we'll be using the <a href="http://ubicom.com/products/sx/sx.html">Ubicom SX</a> series of
+microcontrollers, which are a lower priced higher performing knock off of the
+most commonly used amateur microcontroller, the infamous <a href="http://www.microchip.com/1010/index.htm">PIC microcontroller</a>. These
+things are pretty basic units in terms of extra hardware freebies, but that
+really isnt a problem, the chips are fast and give us enough processing power
+to do all the heavy work in software alone.</p>
+
+<p>The functionality we can get with these units is fairly decent. They've
+got twenty some odd lines of generic IO pins. Thats more than enough to
+control a bank of lights and to put a couple switches to control them all. A
+single $5 unit - plus some extra odds and bits of hardware - can dim twenty
+household lights. Or turn on and off twenty appliaces. Or with a little
+creativity, control your average VCR. In case its just not enough, there's a
+higher end big brother chip with fourty some odd general purpose IO lines,
+enough to easily steal control just about any appliance you can imagine.</p>
+
+<p>We built a very basic variable lenght packet based protocol to work on top
+of multi-drop serial. We are using RS-485 twisted pair serial, however Zigbee
+implementations are pending. The protocol uses a variable length addressing
+scheme. All nodes are completely auto-baud, independant of their clock source
+and fully asyncronous. This combines to give an extremely flexible platform
+capable of durable operations in a range of environments, including low
+powered applications.</p>
+
+<p>Really what we've developed is in fact a platform. Developers build
+peripherials based off resources, declaring how much I/O they need and how
+much memory they need. A developer defines code for initialization, runtime
+and message-recieving. From this defined peripherial, the OS Platform allows
+a use to assemble a selection of peripherials onto a device, map the various
+peripherials to various pins, and have the platform system generate, compile
+and burn source code onto a physical microcontroller. The Platform
+automatically retrieves a unique 16-byte ID number and adds this device to
+the master list of devices.</p>
+<p>&nbsp;</p>
+
+<p>To make these independent devices actually do something, the various nodes
+- the independent controllers on the network - need a language with which
+they can communicate. The inherent problem with most languages is that they
+have a limited set vocabulary. You might define a language which lets a
+stereo pause play and rewind, but eventually someones going to come along and
+define the ability to fast forward. While we can plan for today, its
+imossible to know what tomorrow will bring. Any standard which will have to
+withstand the test of time must be dynamic enough to grow with it. Creating
+this language is a true challenge. There are a number of prexisting standards
+for languages, although none of them are comprehensive enough to suffice for
+our purposes. None the less, these prexisting languages are interesting
+because they are accepted standards which can be built upon, serving as a
+useful base.</p>
+
+<p>Instead of choosing a language and working with the language, we've
+developed a software bridge interface. It works by exposing a minimalistic
+remote memory and message-passing systems to device driver developers who
+then build control and abstraction layers on top of either a peripherial or a
+collection of peripherials. This allows more specialized controls to be
+derived from very generic systems. A light dimmer peripherial and its
+associate default device driver could be used to derive a fixed frequency
+stroboscopic system. Multiple lights can be ganged together to form a virtual
+single light device.</p>
+
+<p>From these device drivers, Part Two implements a dynamic Universal Plug
+and Play system which allows users to map <i><b>in real time</b></i>their
+physical network devices into Universal Plug and Play services and
+devices.</p>
+
+</body>
+</html>

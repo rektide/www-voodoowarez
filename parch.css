@@ -1,0 +1,92 @@
+body {
+	padding: 12px;
+}
+
+p {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	color: #C0C0AD;
+	font-size: x-small;
+	margin: 0px;
+	padding: 0px 8px;
+}
+
+h1 {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: x-large;
+	font-style: normal;
+	font-weight: bolder;
+	margin: 0px;
+	padding: 0px;
+}
+
+.headersize {
+  font-size: large;
+  font-weight: bold;
+}
+
+h2 {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: large;
+	font-weight: bold;
+	color: #90c860;
+}
+
+h2.sub {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: small;
+	font-weight: bold;
+	color: #90c860;
+	line-height: -5px;
+}
+
+h3 {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	color: #FDFFD8;
+	margin: 0px;
+	padding: 0px 8px;
+}
+
+h4 {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: medium;
+	font-weight: normal;
+	margin: 0px;
+	color: #C0C0AD;
+	padding: 0px 8px;
+}
+
+td {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	margin: 0px;
+	padding: 0px;
+}
+
+.indent {
+	padding-left: 12px;
+
+}
+.indent2 {
+ padding-left: 24px;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #EAFAFA;
+}
+a:link {
+	text-decoration: none;
+	color: #EAFAFA;
+}
+a:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+.inline {
+	display: inline;
+}
+
+.silvered 
+{
+ color: #EAFAFA
+}

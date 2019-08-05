@@ -1,0 +1,169 @@
+<html>
+<head>
+<title>Interface</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="/base.css" type="text/css">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<h1>Part Two: Machine, Meet Man</h1>
+<h2>Comprehending Humanity</h2>
+
+<p>Once this vast network is in place, the question becomes what to do with
+it. Given all this control, all this potential, how do we reduce it down to a
+level that people can use? How do we enable, without alienation?</p>
+
+<p>This will be the difference between the generation one device automation
+products of today and the generation two device automation systems of
+tomorrow. The systems of tomorrow will understand people, rather than the
+people having to understand the machine.</p>
+
+<p>Our ultimate goal is to present a flexible system where users can become
+comfortable doing their own scripting. To do this, we need a system which can
+express <em>design patterns of integration</em>. We need a design which
+exposes the ways in which objects work together. Integrated semantics must be
+able to provide intuitive multi-dimensional analysis and manipulation.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<h2>Machine, Understand Thyself</h2>
+
+<p><strong>Fundamentals,<br>
+Statement of Purpose</strong></p>
+<p>Most crucial to man and machine interacting is making machines talk
+amongst themselves and understand. We cannot build the perfect interface. Our
+most glamourous attempts will never be without blemish. Instead, we must
+provide a means under which all programmers can come and work together under.
+Here we will address the greater-sentience which powers these fundamentally
+simple I/O devices, the extensibility engine which drives the heart of the
+beast. Behind the devices, behind their software bridges lies a technology
+aimed at one thing; cooperation and unification.</p>
+
+<p>The implementation we have chosen is a <a href="http://c2.com/cgi/wiki?TupleSpace">tuple space</a> system. The key
+factors is that we use a tuple space to implement a "coordination language."
+That is a set of components which can be tied together across many different
+languages to aid in coherency &amp; distributed computing. Fundamentally it
+is no more than an atomized way of operating on a collection of objects. From
+this basis, all functionality can be derived. Our implementation of the tuple
+space closely parallels many of the views expressed in <a href="http://www.manageability.org/blog/stuff/tuple-spaces-for-human-interaction/view">this
+webblog</a> on tuples. The goal is to allow for a combination of static and
+dynamically typed objects in any language through a simplistic wholly defined
+<a href="http://rest.blueoxen.net/cgi-bin/wiki.pl">REST</a> web-api.</p>
+
+<p>Our object system is built upon a functional language paradigm ( ex: LISP
+). We hope to implement a powerful lambda-programming system which allows for
+individual objects to be as extensible as possible. Through Inversion of
+Control containers and reflection technology, we're hoping to allow even the
+most static of programming conventions to gain the benefits of our
+architecture.</p>
+
+<p>Lastly, the system is <strong>transport independent</strong>, with a
+default XML object format. It seamlessly integrates RDF and OWL objects.</p>
+<p>&nbsp;</p>
+
+<p><strong>Principals of Design</strong></p>
+
+<p>We follow some of the <a href="http://www.w3.org/DesignIssues/Axioms.html">Axioms</a> set forth by our
+Lord and Master of All Things Semantic, <a href="http://www.w3.org/DesignIssues/">Tim Berners-Lee</a>. Most dear and
+true, we hold Axiom 0 and Axiom 0a to heart:<em>"Any resource anywhere can be
+given a URI,"</em> and Axiom 0a, <em>"Any resource of significance should be
+given a URI." </em>Starting with these tenants, we attempt to maximize the
+capabilities and syntax sugar of our tuple system. Any non-anonymous object
+receives at least one URI. Anonymous objects are reference counted and
+cleaned, and they too receive allocation out of a temporary namespaces.</p>
+
+<p>Our other primary sources of influence was the <a href="http://www.erights.org/">E language</a>. E is the language closest to
+perfection that this author has ever witnessed: its <a href="http://www.eros-os.org/essays/capintro.html">capabilities</a> <a href="http://www.erights.org/elib/capability/ode/ode-capabilities.html">programming</a>
+integrates security so well with distributed programming it becomes almost
+difficult to write unsafe code, even in a hostile environment.</p>
+
+<p>The E archicture is so beautiful primarily because it was designed to be
+as asyncronous and unreliable as the web, yet still function as a securable
+contracted message passing system. It builds upon many of the features and
+concurrencies which made <a href="http://www.erlang.org/">Erlang</a> so
+special. The basic principals of the imperfect network imply a stark answer
+to <a href="http://www.erights.org/e/satan/">Dining</a> <a href="http://www.xent.com/pipermail/fork/2001-August/002923.html">Philosophers</a>,
+never let any remote object perform locking for you. Mass-overgeneralizing
+here, simply queue requests, and move on, find something useful to do. From
+here, E builds to propose that programs should generally pretend like they do
+have the object, whenever possible, and only to flag and exception <em>when
+</em>something does go wrong.</p>
+<p>&nbsp;</p>
+
+<p><strong>Architecture At Large,</strong><br>
+<strong>Postscript; Where this Bridge is Going?</strong></p>
+
+<p>This architecture is built to assure that devices, information sources,
+services and software agents become as <em><strong>universal</strong></em> as
+possible. From this framework we are building templates to orchestrate
+virtualization into concrete devices. The core virtualization functionality
+at release will be the ability to derive UPnP device and service templates
+and instantiations from arbitrary tuplespaces. Lambda-programming permits for
+advanced partial completeness and dynamic type-instancing (giving one
+instance of a class a unique method function, for example). We can remap
+these relationships at runtime and we can load or copy (select chunks of)
+checkpointed states or configurations across services. Dynamic instantiation
+allows devices to virtually "work" with or without the actual physical
+devices present , allowing for users and programs to easily create and
+manipulate sets of temporary program checkpoints. This is vital for contract
+programming, as well as for federated architectures which we will get to
+latter. We consider the tuple space solution coupled with <a href="http://www.skyhunter.com/marcs/ewalnut.html#SEC18">promise</a> and
+contract distributed systems (influenced by the E language) to be the only
+viable way to work in a truly distributed sometimes-connected world.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<h2>Machine, Know Your User</h2>
+
+<p>As soon as this is complete, we will begin integration of the Liberty
+Alliances and WS-Federation specifications for Federated Identity Management.
+This key component allows for entities to identify not only themselves, but
+to specify the federations and systems which power their identity. It
+alleviates the burden of mobile authentication and authorization from the
+user and the mobile device and places it in the hands of your identity
+manager, be it your corporation or your own private server. This allows for
+complex B2B interactions between identity servers to establish the full
+identity and privledges of the user. Crucial to this technology are single
+sign on, and, equally importantly, single sign off technologies. As a whole,
+Liberty Alliance is a secure generic foundation for challenge-response
+authentication. We will focus heavily on providing user tools for kerberos
+intergration and <a href="http://www.wedgetail.com/technology/spnego.html">SPNEGO</a> web-browser
+based kerberos as a basis for Liberty Alliance implementations.</p>
+
+<p>Lets go back to one of the key principals for a moment: smart contracts
+can be negotiated between identity servers, rather than devices. By selecting
+data which matches a particular semantic, various aspects of configuration
+can be re-instantiated (<em>copied</em>) on to a seperate device. Building
+off of the asycronous message passing architecture and the dynamic
+instancing, we develop <em>advanced object and state storage
+capabilities</em>. The fundamental idea of secure capabilities coding is that
+you can just then <em>add</em> the identity authentication and authorization
+structures of a Liberty Alliance implementation and have objects miraculously
+begin to operate in fancy cross-federation ways. Liberty Alliance is nothing
+more than a framework for negotiating capabilities, albiet a framework which
+mercifully doesn't have to involve your cell phone, should it happen to be
+your client.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<h2>Now machine, be on your best behavior</h2>
+
+<p>So, back to the user, for a few last words. Why is all of this fancy
+information architecture important? Because it allows web services to be
+safely consumed. It makes design an issue of modelling consumation,
+describing consumation, and visualizing relationships. It presents a
+<em>functional </em>view and control of persistent and distributed
+data-objects. Our reference SpiffyNode to UPnP bridge system will illustrate
+the flexibility and power this system makes for developers and users
+alike.</p>
+<p>&nbsp;</p>
+
+<h2>Conclusion</h2>
+
+<p>This is not another service architecture. Not another middleware or
+framework. This is a coordination framework for objects and services, agents
+and information to expose themselves in, and for these systems to interact
+with. For users to freely interact with their objects.</p>
+
+</body>
+</html>

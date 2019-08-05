@@ -1,0 +1,47 @@
+a {  font-weight: bold; color: #000066; }
+a:hover {  font-weight: bold; color: #000044; text-decoration: underline; }
+a:link {  font-weight: bold; color: #000066; text-decoration: none;  }
+a:active {  font-weight: bold; color: #000066; }
+a:visited {  font-weight: bold; color: #000066; text-decoration: none; }
+p {  
+ font-family: Verdana, Arial, Helvetica, sans-serif; 
+ font-size: 10px; 
+ padding: 0px 8px;}
+h1 {
+ font-family: Verdana, Arial, Helvetica, sans-serif; 
+ font-size: 30px;
+ font-weight: bold; 
+ padding: 0px 8px;}
+h2 {
+ font-family: Verdana, Arial, Helvetica, sans-serif; 
+ font-size: 18px;
+ font-weight: bold; 
+ padding: 0px 8px;}
+body {
+ padding: 12px; }
+td {
+ border: 2px;
+ border-style: solid;
+ padding: 6px;
+ cellpadding: 3em;
+ cellspacing: 2em;
+ background-color: #D0E0DA; 
+ font-family: Verdana, Arial, Helvetica, sans-serif; 
+ font-size: 10px; 
+ text-align: justify; }
+td.tablehead {
+ padding: 10px 16px;
+ font-size: 14px;
+ background-color: #E0E0E0;
+ cellpadding: 4px;
+ cellspacing: 18px;
+ font-weight: bold; 
+ vertical-align: top; }
+ 
+td.th {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size: 18px;
+ font-weight: bold;
+ cursor: hand;
+ cursor: pointer;
+ vertical-align: bottom; }
